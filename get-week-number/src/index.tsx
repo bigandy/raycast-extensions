@@ -1,24 +1,24 @@
 import { Detail, ActionPanel, Action } from "@raycast/api";
-import { useFetch } from "@raycast/utils";
 
-// const url = "http://localhost:8888/api/date/week-number";
-const url = "https://bigandy-astro.netlify.app/.netlify/functions/week";
+const useWeekNumber = () => {
+  const currentDate = new Date();
+  const startDate = new Date(currentDate.getFullYear(), 0, 1);
+  const dateDifference: number = (currentDate as unknown as number) - (startDate as unknown as number);
+  const days = Math.floor(dateDifference / (24 * 60 * 60 * 1000));
 
-interface WeekNumber {
-  weekNumber: string;
-}
+  const weekNumber = Math.ceil(days / 7);
+  return weekNumber;
+};
 
 export default function Command() {
-  const { isLoading, data, revalidate } = useFetch<WeekNumber>(url);
+  const weekNumber = useWeekNumber();
 
   return (
     <Detail
-      isLoading={isLoading}
-      markdown={`Week Number: ${data?.weekNumber}`}
+      markdown={`Week Number: ${weekNumber}`}
       actions={
         <ActionPanel>
-          <Action.CopyToClipboard title="Copy" content={data?.weekNumber as string} />
-          <Action title="Reload" onAction={() => revalidate()} />
+          <Action.CopyToClipboard title="Copy" content={weekNumber} />
         </ActionPanel>
       }
     />
