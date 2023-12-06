@@ -1,0 +1,62 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "create-new-weeknote",
+  "title": "create-new-weeknote",
+  "description": "creates a new weeknote post for my site",
+  "icon": "command-icon.png",
+  "author": "bigandy",
+  "license": "MIT",
+  "commands": [
+    {
+      "name": "index",
+      "title": "Weeknote",
+      "description": "Create a new weeknote from Raycast!",
+      "mode": "view"
+    }
+  ],
+  "preferences": [
+    {
+      "name": "VSCodeVariant",
+      "description": "VSCode variant to open the selected finder into.",
+      "type": "dropdown",
+      "title": "Visual Studio Code Variant",
+      "required": false,
+      "default": "Visual Studio Code",
+      "data": [
+        {
+          "title": "Visual Studio Code",
+          "value": "com.microsoft.VSCode"
+        },
+        {
+          "title": "Visual Studio Code - Insiders",
+          "value": "com.microsoft.VSCodeInsiders"
+        },
+        {
+          "title": "VSCodium",
+          "value": "com.vscodium"
+        }
+      ]
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.63.0",
+    "@types/fs-extra": "11.0.4",
+    "date-fns": "2.30.0",
+    "fs-extra": "11.2.0"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/react": "18.2.27",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
