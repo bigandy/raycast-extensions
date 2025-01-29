@@ -38,9 +38,7 @@ ${values.content
     ? `weeknote-${Date.now() as unknown as string}-${weeknumber}`
     : `weeknotes-${year}-${weeknumber}`;
 
-  const pathToFolder = testing
-    ? testingPathToFolder
-    : `/Users/andrew/Sites/astro-blog/src/content/blog/weeknotes/${year}/`;
+  const pathToFolder = testing ? testingPathToFolder : `/Users/andrew/Sites/astro-blog/src/content/weeknotes/${year}/`;
 
   const createdFile = await createNewFileWithText("md", pathToFolder, text, filename);
 
